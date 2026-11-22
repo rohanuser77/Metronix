@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Mukta:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-saffron:   #F97316;
+    --color-charcoal:  #1C1A17;
+    --color-cream:     #FAFAF7;
+    --color-parchment: #F3EFE8;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-cream text-ink font-sans;
+  }
+
+  /* Focus rings — saffron, always visible */
+  :focus-visible {
+    outline: 2px solid #F97316;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Reduced motion — always respect */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* === BUTTONS === */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-saffron text-white font-semibold text-body-md rounded-btn
+           shadow-hard-md transition-all duration-150 cursor-pointer
+           hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg
+           active:translate-x-0 active:translate-y-0 active:shadow-hard-sm
+           focus-visible:outline-saffron;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-cream text-charcoal font-semibold text-body-md 
+           rounded-btn border border-charcoal shadow-hard-md transition-all duration-150 cursor-pointer
+           hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg
+           active:translate-x-0 active:translate-y-0 active:shadow-hard-sm;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-transparent text-charcoal font-semibold text-body-md
+           rounded-btn border-2 border-charcoal transition-all duration-150 cursor-pointer
+           hover:bg-charcoal hover:text-cream;
+  }
+
+  /* === CARDS === */
+  .card {
+    @apply bg-cream border border-border rounded-card shadow-hard-md p-6
+           transition-all duration-150
+           hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-saffron-lg;
+  }
+
+  .card-parchment {
+    @apply bg-parchment border border-border rounded-card shadow-hard-md p-6
+           transition-all duration-150
+           hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-saffron-lg;
+  }
+
+  /* === BADGES / TAGS === */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 text-caption font-semibold uppercase tracking-wide
+           rounded-badge border;
+  }
+
+  .badge-saffron {
+    @apply badge bg-saffron/10 text-saffron border-saffron/30;
+  }
+
+  .badge-leaf {
+    @apply badge bg-leaf/10 text-leaf border-leaf/30;
+  }
+
+  /* === SECTION WRAPPER === */
+  .section-wrapper {
+    @apply w-full px-4 sm:px-6 lg:px-8;
+  }
+
+  .content-container {
+    @apply max-w-[1200px] mx-auto;
+  }
+
+  /* === HINDI TEXT === */
+  .text-hindi {
+    @apply font-hindi;
+  }
+
+  /* === HARD SHADOW TRANSITION (for card hover) === */
+  .shadow-transition {
+    transition: transform 150ms ease, box-shadow 150ms ease;
+  }
+}
