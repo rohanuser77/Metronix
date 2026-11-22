@@ -1,5 +1,5 @@
 # Mentorix
-> *"Woh rah jo sirf tere liye bani hai."*
+
 
 Offline-first, vernacular, gamified STEM learning platform built specifically for rural and semi-urban Indian students (Class 6–12).
 
