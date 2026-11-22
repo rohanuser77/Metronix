@@ -30,7 +30,7 @@ export default function ForParentsPage() {
         <section className="section-wrapper py-section text-left">
           <div className="content-container">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              
+
               <div className="card-modern">
                 <span className="text-xs font-bold font-mono text-brand-600 uppercase">
                   Channel 01
