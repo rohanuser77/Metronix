@@ -1,17 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Mukta:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Mukta:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --color-saffron:   #F97316;
-    --color-charcoal:  #1C1A17;
-    --color-cream:     #FAFAF7;
-    --color-parchment: #F3EFE8;
-  }
-
   html {
     scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
@@ -19,17 +12,20 @@
   }
 
   body {
-    @apply bg-cream text-ink font-sans;
+    @apply bg-canvas-subtle text-slate-700 font-sans selection:bg-brand-100 selection:text-brand-900;
   }
 
-  /* Focus rings — saffron, always visible */
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-slate-900 font-bold tracking-tight;
+  }
+
+  /* Accessible focus ring */
   :focus-visible {
-    outline: 2px solid #F97316;
+    outline: 2px solid #2563EB;
     outline-offset: 2px;
-    border-radius: 4px;
+    border-radius: 6px;
   }
 
-  /* Reduced motion — always respect */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
       animation-duration: 0.01ms !important;
@@ -39,71 +35,50 @@
 }
 
 @layer components {
-  /* === BUTTONS === */
+  /* === PROFESSIONAL BUTTONS === */
   .btn-primary {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-saffron text-white font-semibold text-body-md rounded-btn
-           shadow-hard-md transition-all duration-150 cursor-pointer
-           hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg
-           active:translate-x-0 active:translate-y-0 active:shadow-hard-sm
-           focus-visible:outline-saffron;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-brand-600 text-white font-semibold text-sm rounded-md
+           shadow-subtle hover:bg-brand-700 transition-all duration-150 active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-cream text-charcoal font-semibold text-body-md 
-           rounded-btn border border-charcoal shadow-hard-md transition-all duration-150 cursor-pointer
-           hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-lg
-           active:translate-x-0 active:translate-y-0 active:shadow-hard-sm;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-slate-800 font-semibold text-sm rounded-md
+           border border-slate-300 shadow-subtle hover:bg-slate-50 hover:border-slate-400 transition-all duration-150 active:scale-[0.99];
   }
 
-  .btn-ghost {
-    @apply inline-flex items-center gap-2 px-6 py-3 bg-transparent text-charcoal font-semibold text-body-md
-           rounded-btn border-2 border-charcoal transition-all duration-150 cursor-pointer
-           hover:bg-charcoal hover:text-cream;
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-transparent text-brand-600 font-semibold text-sm rounded-md
+           border border-brand-600 hover:bg-brand-50 transition-all duration-150 active:scale-[0.99];
   }
 
-  /* === CARDS === */
-  .card {
-    @apply bg-cream border border-border rounded-card shadow-hard-md p-6
-           transition-all duration-150
-           hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-saffron-lg;
+  /* === MODERN CARDS === */
+  .card-modern {
+    @apply bg-white border border-slate-200 rounded-xl p-6 shadow-card transition-all duration-200;
   }
 
-  .card-parchment {
-    @apply bg-parchment border border-border rounded-card shadow-hard-md p-6
-           transition-all duration-150
-           hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-hard-saffron-lg;
+  .card-modern:hover {
+    @apply shadow-card-hover border-slate-300 -translate-y-0.5;
   }
 
-  /* === BADGES / TAGS === */
-  .badge {
-    @apply inline-flex items-center px-2.5 py-1 text-caption font-semibold uppercase tracking-wide
-           rounded-badge border;
+  /* === BADGES === */
+  .badge-neutral {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200;
   }
 
-  .badge-saffron {
-    @apply badge bg-saffron/10 text-saffron border-saffron/30;
+  .badge-brand {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-200;
   }
 
-  .badge-leaf {
-    @apply badge bg-leaf/10 text-leaf border-leaf/30;
+  .badge-success {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-soft text-emerald border border-emerald-border;
   }
 
-  /* === SECTION WRAPPER === */
+  /* === CONTAINER WRAPPER === */
   .section-wrapper {
     @apply w-full px-4 sm:px-6 lg:px-8;
   }
 
   .content-container {
-    @apply max-w-[1200px] mx-auto;
-  }
-
-  /* === HINDI TEXT === */
-  .text-hindi {
-    @apply font-hindi;
-  }
-
-  /* === HARD SHADOW TRANSITION (for card hover) === */
-  .shadow-transition {
-    transition: transform 150ms ease, box-shadow 150ms ease;
+    @apply max-w-7xl mx-auto;
   }
 }

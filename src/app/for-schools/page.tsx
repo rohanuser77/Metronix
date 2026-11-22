@@ -1,102 +1,99 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import SchoolPartnershipForm from "@/components/forms/SchoolPartnershipForm";
+import { LaptopOfflineIcon, UsersIcon, CheckCircleIcon } from "@/components/icons/MetronixIcons";
 
 export const metadata = {
-  title: "For Schools & NGOs — Mentorix",
-  description: "Rural schools, panchayats aur NGOs ke liye Mentorix Offline Kiosk Pack aur Teacher Sahayak toolkit.",
+  title: "For Institutions & Schools — Metronix",
+  description: "Deploy offline STEM micro-servers and curriculum-aligned laboratory software in government and rural secondary schools.",
 };
 
 export default function ForSchoolsPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 bg-cream pt-20">
+      <main className="flex-1 bg-canvas-subtle pt-20">
         {/* Banner */}
-        <section className="section-wrapper py-16 bg-parchment border-b-2 border-charcoal">
-          <div className="content-container text-left">
-            <span className="badge bg-saffron text-white border-charcoal text-caption font-bold px-3 py-1 mb-4 shadow-hard-sm">
-              Institutional Partnership
-            </span>
-            <h1 className="text-display-lg sm:text-display-xl text-charcoal font-hindi mb-4">
-              Schools, Panchayats aur NGOs ke Liye
+        <section className="section-wrapper py-14 bg-white border-b border-slate-200 text-left">
+          <div className="content-container">
+            <span className="badge-brand mb-3">Institutional Infrastructure</span>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Institutional STEM Deployments for Zero-Internet Regions
             </h1>
-            <p className="text-body-lg text-ink font-hindi max-w-2xl leading-relaxed">
-              Jahan internet bilkul nahi hai, wahan bhi har bacche tak STEM shiksha pahunchane ke liye hamare offline hardware aur software solutions.
+            <p className="text-base text-slate-600 mt-3 max-w-3xl leading-relaxed">
+              Metronix partners with state school education boards, district administrative collectors, and nonprofit foundations to provide fully offline laboratory software and instructional aids.
             </p>
           </div>
         </section>
 
-        {/* 2 Main Solutions: Teacher Sahayak + Offline Kiosk */}
-        <section className="section-wrapper py-section">
-          <div className="content-container text-left">
+        {/* 2 Core Deployment Models */}
+        <section className="section-wrapper py-section text-left">
+          <div className="content-container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-              {/* Solution 1 */}
-              <div className="bg-cream border-2 border-charcoal rounded-panel p-8 shadow-hard-lg flex flex-col justify-between">
-                <div>
-                  <span className="badge bg-career-eng/15 text-career-eng border-career-eng/40 text-xs font-bold mb-4">
-                    For Teachers
-                  </span>
-                  <h2 className="text-display-sm text-charcoal font-hindi mb-3">
-                    Teacher Sahayak Toolkit
-                  </h2>
-                  <p className="text-body-md text-ink font-hindi leading-relaxed mb-6">
-                    Gramin kshetro ke shikshak par dher saara administrative kaam hota hai. Teacher Sahayak mode unka bojh aadha karta hai:
-                  </p>
-                  <ul className="space-y-3 text-body-sm text-ink font-hindi">
-                    <li className="flex items-start gap-2.5">
-                      <span className="text-leaf font-bold">✓</span>
-                      <span>Blackboard par banane ke liye ready STEM diagrams & formulas</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="text-leaf font-bold">✓</span>
-                      <span>Bina internet ke chalne wale offline classroom simulations</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="text-leaf font-bold">✓</span>
-                      <span>1-click monthly student performance report PDF for education officers</span>
-                    </li>
-                  </ul>
+              
+              {/* Kiosk Pack */}
+              <div className="card-modern">
+                <div className="w-10 h-10 rounded-lg bg-cyan-soft border border-cyan/20 flex items-center justify-center text-cyan mb-4">
+                  <LaptopOfflineIcon size={22} />
                 </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                  Metronix Offline Kiosk Micro-Server
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                  A standalone plug-and-play microcomputer running on low-power hardware (such as a Raspberry Pi or repurposed Android tablet):
+                </p>
+                <ul className="space-y-2.5 text-xs text-slate-700">
+                  <li className="flex items-start gap-2">
+                    <CheckCircleIcon size={14} className="text-emerald shrink-0 mt-0.5" />
+                    <span>Emits a local Wi-Fi intranet supporting up to 35 student devices simultaneously</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircleIcon size={14} className="text-emerald shrink-0 mt-0.5" />
+                    <span>Operates continuously for 8 hours on standard 5V power banks or solar storage</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircleIcon size={14} className="text-emerald shrink-0 mt-0.5" />
+                    <span>Synchronizes assessment metrics asynchronously whenever an instructor visits a town center</span>
+                  </li>
+                </ul>
               </div>
 
-              {/* Solution 2 */}
-              <div className="bg-cream border-2 border-charcoal rounded-panel p-8 shadow-hard-lg flex flex-col justify-between">
-                <div>
-                  <span className="badge bg-sky/15 text-sky border-sky/40 text-xs font-bold mb-4">
-                    For Zero-Internet Areas
-                  </span>
-                  <h2 className="text-display-sm text-charcoal font-hindi mb-3">
-                    Offline Kiosk Micro-Server Pack
-                  </h2>
-                  <p className="text-body-md text-ink font-hindi leading-relaxed mb-6">
-                    Ek Raspberry Pi ya purane Android tablet par poora Mentorix server chal sakta hai:
-                  </p>
-                  <ul className="space-y-3 text-body-sm text-ink font-hindi">
-                    <li className="flex items-start gap-2.5">
-                      <span className="text-leaf font-bold">✓</span>
-                      <span>Local WiFi hotspot se 30-40 phones ek saath connect ho sakte hain</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="text-leaf font-bold">✓</span>
-                      <span>Solar battery ya power bank par 8 ghante lagatar chalne yogya</span>
-                    </li>
-                    <li className="flex items-start gap-2.5">
-                      <span className="text-leaf font-bold">✓</span>
-                      <span>Hafte mein ek baar volunteer ke pen-drive se naye tests update hote hain</span>
-                    </li>
-                  </ul>
+              {/* Teacher Toolkit */}
+              <div className="card-modern">
+                <div className="w-10 h-10 rounded-lg bg-brand-50 border border-brand-200 flex items-center justify-center text-brand-600 mb-4">
+                  <UsersIcon size={22} />
                 </div>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">
+                  Instructional Teaching Assistant Toolkit
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                  Empowering rural educators with curriculum-aligned demonstration templates and automatic administrative reporting:
+                </p>
+                <ul className="space-y-2.5 text-xs text-slate-700">
+                  <li className="flex items-start gap-2">
+                    <CheckCircleIcon size={14} className="text-emerald shrink-0 mt-0.5" />
+                    <span>Pre-rendered blackboard technical diagrams for complex Physics and Chemistry reactions</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircleIcon size={14} className="text-emerald shrink-0 mt-0.5" />
+                    <span>Automated single-click class mastery PDF exports for Block Education Officers</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircleIcon size={14} className="text-emerald shrink-0 mt-0.5" />
+                    <span>Adaptive question banks organized strictly by learning outcome taxonomy</span>
+                  </li>
+                </ul>
               </div>
+
             </div>
 
-            {/* Partnership Form Card */}
-            <div className="bg-parchment border-2 border-charcoal rounded-panel p-8 sm:p-12 shadow-hard-xl max-w-2xl mx-auto">
-              <h3 className="text-display-sm text-charcoal font-hindi mb-2">
-                Hamare sath pilot shuru karein
+            {/* Institutional Form */}
+            <div className="max-w-2xl mx-auto bg-white border border-slate-200 rounded-2xl p-8 shadow-card">
+              <h3 className="text-lg font-bold text-slate-900 mb-1">
+                Register for an Institutional Pilot
               </h3>
-              <p className="text-body-sm text-stone font-hindi mb-6">
-                Apne school ya sanstha ki jankari likhein, hamari team aapse sampark karegi:
+              <p className="text-xs text-slate-500 mb-6">
+                Complete the inquiry form below to evaluate Metronix hardware packs or curriculum licensing for your educational institution.
               </p>
               <SchoolPartnershipForm />
             </div>

@@ -9,84 +9,77 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // === MENTORIX BRAND COLORS ===
-        saffron:    "#F97316",   // Primary brand, CTAs, hero accent
-        amber:      "#FBBF24",   // Secondary accent, XP/gamification
-        // Neutrals
-        charcoal:   "#1C1A17",   // Headings, strong text
-        ink:        "#3D3A35",   // Body text
-        stone:      "#7C7570",   // Muted, captions
-        cream:      "#FAFAF7",   // Page background
-        parchment:  "#F3EFE8",   // Card/section backgrounds
-        border:     "#E8E2DA",   // Hairline borders
-        // Semantic
-        leaf:       "#22C55E",   // Success, correct answers, streaks
-        sky:        "#0EA5E9",   // Info, links, science
-        rose:       "#EF4444",   // Errors, alerts
-        // Career path accents (used only in those specific contexts)
-        "career-eng":  "#8B5CF6",  // Engineering path badge
-        "career-med":  "#14B8A6",  // Medical/Agri path badge
+        // === METRONIX GLOBAL EDUCATIONAL PALETTE ===
+        // Primary brand & interactive action (Trust Blue & Deep Navy)
+        brand: {
+          50:  "#EFF6FF",
+          100: "#DBEAFE",
+          200: "#BFDBFE",
+          500: "#3B82F6",
+          600: "#2563EB", // Primary CTA Blue
+          700: "#1D4ED8", // Hover Blue
+          800: "#1E40AF",
+          900: "#1E3A8A",
+          950: "#0F254B", // Deep Academic Navy
+        },
+        navy: {
+          DEFAULT: "#0A2540",
+          deep:    "#07172A",
+          surface: "#0F2744",
+        },
+        // Mastery / Verified STEM Success (Emerald & Teal)
+        emerald: {
+          DEFAULT: "#059669",
+          soft:    "#ECFDF5",
+          border:  "#A7F3D0",
+        },
+        cyan: {
+          DEFAULT: "#0284C7",
+          soft:    "#F0F9FF",
+        },
+        // Surfaces & Backgrounds (Soft, low-fatigue neutrals)
+        canvas: {
+          DEFAULT: "#FFFFFF",
+          subtle:  "#F8FAFC", // Main soft page background
+          elevated:"#F1F5F9", // Card fill
+          border:  "#E2E8F0", // Hairline clean border
+        },
+        // High-contrast slate typography
+        slate: {
+          950: "#020617",
+          900: "#0F172A", // Primary Headings
+          800: "#1E293B", // Strong Text
+          700: "#334155", // Main Body Text
+          600: "#475569",
+          500: "#64748B", // Muted / Captions
+          400: "#94A3B8",
+          300: "#CBD5E1",
+          200: "#E2E8F0",
+          100: "#F1F5F9",
+          50:  "#F8FAFC",
+        },
       },
       fontFamily: {
-        sans: ["Plus Jakarta Sans", "system-ui", "sans-serif"],
+        sans: ["Plus Jakarta Sans", "Inter", "system-ui", "sans-serif"],
         hindi: ["Mukta", "system-ui", "sans-serif"],
         mono:  ["JetBrains Mono", "monospace"],
       },
-      fontSize: {
-        "display-xl": ["4rem",    { lineHeight: "1.05", letterSpacing: "-0.025em", fontWeight: "800" }],
-        "display-lg": ["3rem",    { lineHeight: "1.08", letterSpacing: "-0.02em",  fontWeight: "800" }],
-        "display-md": ["2.25rem", { lineHeight: "1.1",  letterSpacing: "-0.02em",  fontWeight: "700" }],
-        "display-sm": ["1.75rem", { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "700" }],
-        "body-lg":    ["1.125rem",{ lineHeight: "1.65" }],
-        "body-md":    ["1rem",    { lineHeight: "1.65" }],
-        "body-sm":    ["0.875rem",{ lineHeight: "1.6"  }],
-        "caption":    ["0.75rem", { lineHeight: "1.5", letterSpacing: "0.08em" }],
-      },
       boxShadow: {
-        // === HARD EDITORIAL SHADOWS — The Mentorix signature ===
-        "hard-sm":   "2px 2px 0px #1C1A17",
-        "hard-md":   "4px 4px 0px #1C1A17",
-        "hard-lg":   "6px 6px 0px #1C1A17",
-        "hard-xl":   "8px 8px 0px #1C1A17",
-        // Saffron hover variant (applied on :hover via CSS)
-        "hard-saffron-sm": "2px 2px 0px #F97316",
-        "hard-saffron-md": "4px 4px 0px #F97316",
-        "hard-saffron-lg": "6px 6px 0px #F97316",
-        "hard-saffron-xl": "8px 8px 0px #F97316",
-        "none": "none",
+        "subtle":   "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+        "card":     "0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px -1px rgba(0, 0, 0, 0.08)",
+        "card-hover":"0 10px 15px -3px rgba(15, 37, 75, 0.08), 0 4px 6px -4px rgba(15, 37, 75, 0.06)",
+        "elevated": "0 20px 25px -5px rgba(15, 37, 75, 0.1), 0 8px 10px -6px rgba(15, 37, 75, 0.06)",
       },
       borderRadius: {
-        "badge":  "4px",   // Sharp badges — authoritative
-        "btn":    "8px",   // Buttons — grounded, not pill
-        "card":   "12px",  // Standard cards
-        "panel":  "16px",  // Large panels
-        "frame":  "20px",  // Illustration frames
+        "sm": "6px",
+        "md": "8px",
+        "lg": "12px",
+        "xl": "16px",
+        "2xl": "20px",
       },
       spacing: {
-        "section":    "80px",   // Standard section vertical padding
-        "section-sm": "48px",   // Mobile section padding
-        "content":    "1200px", // Max content width
-      },
-      backgroundImage: {
-        "grain": "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E\")",
-      },
-      keyframes: {
-        marquee: {
-          "0%":   { transform: "translateX(0%)" },
-          "100%": { transform: "translateX(-50%)" },
-        },
-        "fade-up": {
-          "0%":   { opacity: "0", transform: "translateY(16px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "card-pop": {
-          "0%":   { transform: "translateX(0) translateY(0)", boxShadow: "4px 4px 0px #1C1A17" },
-          "100%": { transform: "translateX(-2px) translateY(-2px)", boxShadow: "8px 8px 0px #F97316" },
-        },
-      },
-      animation: {
-        marquee:  "marquee 30s linear infinite",
-        "fade-up": "fade-up 0.4s ease-out both",
+        "section": "72px",
+        "section-sm": "40px",
       },
     },
   },

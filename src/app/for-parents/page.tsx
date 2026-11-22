@@ -1,105 +1,106 @@
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Link from "next/link";
+import { CheckCircleIcon, ArrowRightIcon } from "@/components/icons/MetronixIcons";
 
 export const metadata = {
-  title: "For Parents (Mata-Pita ke Liye) — Mentorix",
-  description: "Aapke bacche ki padhai, aapki bhasha mein. Har hafte WhatsApp progress update aur audio scorecard bina kisi app install kiye.",
+  title: "Parent Progress Reporting — Metronix",
+  description: "Weekly vernacular progress scorecards and audio summaries delivered directly to parents via WhatsApp and SMS without requiring an app installation.",
 };
 
 export default function ForParentsPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 bg-cream pt-20">
-        {/* Hero */}
-        <section className="section-wrapper py-16 bg-charcoal text-cream border-b-2 border-charcoal">
-          <div className="content-container text-left">
-            <span className="badge bg-saffron text-white border-saffron text-caption font-bold px-3 py-1 mb-4 shadow-hard-saffron-sm">
-              Parents Mode · Mata-Pita ke Liye
-            </span>
-            <h1 className="text-display-lg sm:text-display-xl text-cream font-hindi mb-4">
-              Aapke Bacche ki Padhai — Aapki Bhasha Mein.
+      <main className="flex-1 bg-canvas-subtle pt-20">
+        {/* Banner */}
+        <section className="section-wrapper py-14 bg-white border-b border-slate-200 text-left">
+          <div className="content-container">
+            <span className="badge-brand mb-3">Parental Engagement System</span>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Transparent Academic Progress in Every Family&apos;s Native Language
             </h1>
-            <p className="text-body-lg text-cream/80 font-hindi max-w-2xl leading-relaxed">
-              Bina kisi nayi app ko download kiye — har Ravivar ko aapke WhatsApp par saral report aur Hindi audio note.
+            <p className="text-base text-slate-600 mt-3 max-w-3xl leading-relaxed">
+              Parents should never feel excluded from their child&apos;s educational advancement due to language or literacy barriers. Metronix delivers weekly automated scorecards and audio voice notes directly to standard phones.
             </p>
           </div>
         </section>
 
-        {/* Feature Points */}
-        <section className="section-wrapper py-section">
-          <div className="content-container text-left">
+        {/* Breakdown */}
+        <section className="section-wrapper py-section text-left">
+          <div className="content-container">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              <div className="bg-cream border-2 border-charcoal rounded-panel p-8 shadow-hard-md flex flex-col justify-between">
-                <div>
-                  <div className="w-12 h-12 rounded-btn bg-saffron/15 border-2 border-charcoal flex items-center justify-center text-saffron text-xl font-bold mb-4 shadow-hard-sm">
-                    📱
-                  </div>
-                  <h3 className="text-display-sm text-charcoal font-hindi mb-3">
-                    Seedha WhatsApp Par
-                  </h3>
-                  <p className="text-body-sm text-ink font-hindi leading-relaxed">
-                    Aapko koi complex app nahi chalani padegi. Aapke maujooda WhatsApp number par har hafte ek chhota aur saaf sandesh aayega.
-                  </p>
-                </div>
+              
+              <div className="card-modern">
+                <span className="text-xs font-bold font-mono text-brand-600 uppercase">
+                  Channel 01
+                </span>
+                <h3 className="text-base font-bold text-slate-900 mt-2 mb-2">
+                  Zero Application Burden
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Parents do not need to download or navigate an unfamiliar smartphone application. Reports are delivered directly via standard WhatsApp messages or SMS.
+                </p>
               </div>
 
-              <div className="bg-cream border-2 border-charcoal rounded-panel p-8 shadow-hard-md flex flex-col justify-between">
-                <div>
-                  <div className="w-12 h-12 rounded-btn bg-leaf/15 border-2 border-charcoal flex items-center justify-center text-leaf text-xl font-bold mb-4 shadow-hard-sm">
-                    🎙️
-                  </div>
-                  <h3 className="text-display-sm text-charcoal font-hindi mb-3">
-                    Aawaz mein Sunein
-                  </h3>
-                  <p className="text-body-sm text-ink font-hindi leading-relaxed">
-                    Agar padhna mushkil lage, toh sirf ek button dabakar Hindi, Bhojpuri ya Marathi mein sunein ki baccha kya padh raha hai.
-                  </p>
-                </div>
+              <div className="card-modern">
+                <span className="text-xs font-bold font-mono text-brand-600 uppercase">
+                  Channel 02
+                </span>
+                <h3 className="text-base font-bold text-slate-900 mt-2 mb-2">
+                  Vernacular Audio Summaries
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  For parents who prefer listening over reading, a single tap plays a concise 45-second voice overview in Hindi, Bhojpuri, Marathi, Bengali, or Tamil.
+                </p>
               </div>
 
-              <div className="bg-cream border-2 border-charcoal rounded-panel p-8 shadow-hard-md flex flex-col justify-between">
-                <div>
-                  <div className="w-12 h-12 rounded-btn bg-sky/15 border-2 border-charcoal flex items-center justify-center text-sky text-xl font-bold mb-4 shadow-hard-sm">
-                    💰
-                  </div>
-                  <h3 className="text-display-sm text-charcoal font-hindi mb-3">
-                    Fees aur Sarkari Madad
-                  </h3>
-                  <p className="text-body-sm text-ink font-hindi leading-relaxed">
-                    Sarkari polytechnic, engineering college aur scholarship ki aisi jankari jo private coaching wale aapse chhipaate hain.
-                  </p>
-                </div>
+              <div className="card-modern">
+                <span className="text-xs font-bold font-mono text-brand-600 uppercase">
+                  Channel 03
+                </span>
+                <h3 className="text-base font-bold text-slate-900 mt-2 mb-2">
+                  Institutional Fee Transparency
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  Clear, objective information on subsidized polytechnic courses and government scholarship opportunities to protect families from exploitative private fee structures.
+                </p>
               </div>
+
             </div>
 
-            {/* How to Enroll Child */}
-            <div className="bg-parchment border-2 border-charcoal rounded-panel p-8 sm:p-12 shadow-hard-lg">
-              <h2 className="text-display-md text-charcoal font-hindi mb-6">
-                Apne Bacche ko Kaise Jodein?
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-hindi">
-                <div className="p-4 bg-cream rounded-card border border-border shadow-hard-sm">
-                  <span className="text-caption font-bold text-saffron uppercase font-mono">Kadam 1</span>
-                  <h4 className="font-bold text-charcoal text-body-lg mt-1 mb-2">Waitlist Join Karein</h4>
-                  <p className="text-caption text-ink">Apna ya bacche ka email/phone daal kar seat reserve karein.</p>
-                </div>
-                <div className="p-4 bg-cream rounded-card border border-border shadow-hard-sm">
-                  <span className="text-caption font-bold text-saffron uppercase font-mono">Kadam 2</span>
-                  <h4 className="font-bold text-charcoal text-body-lg mt-1 mb-2">Bhasha Chunein</h4>
-                  <p className="text-caption text-ink">Hindi, Marathi, Bhojpuri ya Bangla — jo bhasha ghar mein boli jaati hai.</p>
-                </div>
-                <div className="p-4 bg-cream rounded-card border border-border shadow-hard-sm">
-                  <span className="text-caption font-bold text-saffron uppercase font-mono">Kadam 3</span>
-                  <h4 className="font-bold text-charcoal text-body-lg mt-1 mb-2">Har Ravivar Update</h4>
-                  <p className="text-caption text-ink">Bina data kharch ke bacche ki tarakki par garv mehsus karein.</p>
-                </div>
+            {/* Simulated Parent WhatsApp Report Preview */}
+            <div className="max-w-2xl mx-auto bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-card">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+                <span className="text-xs font-bold text-slate-900">
+                  Sample Parent Report Dispatch
+                </span>
+                <span className="text-[11px] font-mono text-slate-400">
+                  Every Sunday 10:00 AM
+                </span>
               </div>
 
-              <div className="mt-8 text-center sm:text-left">
-                <Link href="/early-access" className="btn-primary">
-                  Apne Bacche ka Naam Register Karein →
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-2 leading-relaxed">
+                <p className="font-semibold text-slate-900">
+                  Weekly Academic Overview: Aarav Sharma (Class 10 - Section B)
+                </p>
+                <p>
+                  Namaste. During the past 7 days, Aarav has completed 3 virtual physics experiments on Electricity and maintained a 5-day daily study streak.
+                </p>
+                <div className="p-2.5 rounded bg-white border border-slate-200 font-mono text-[11px] space-y-1">
+                  <div>Curriculum Topics Mastered: 4 Modules</div>
+                  <div>Focus Time Logged: 3 hours 40 minutes</div>
+                  <div>Upcoming Target: NMMSS Scholarship Practice Exam</div>
+                </div>
+                <p className="text-slate-500 text-[11px]">
+                  Audio report available in Hindi: [▶ Audio Note: 0:42]
+                </p>
+              </div>
+
+              <div className="mt-6 flex justify-end">
+                <Link href="/early-access" className="btn-primary text-xs py-2 px-4">
+                  <span>Register Student Profile</span>
+                  <ArrowRightIcon size={14} />
                 </Link>
               </div>
             </div>

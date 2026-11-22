@@ -2,20 +2,19 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { CheckCircleIcon, ShieldCheckIcon } from "@/components/icons/MetronixIcons";
 
 export default function EarlyAccessPage() {
   const [email, setEmail] = useState("");
   const [classLevel, setClassLevel] = useState("Class 10");
   const [stateName, setStateName] = useState("Uttar Pradesh");
-  const [goal, setGoal] = useState("Board Exam Topper");
-  const [preferredLang, setPreferredLang] = useState("Hindi");
-  const [totalJoined, setTotalJoined] = useState(8429);
+  const [goal, setGoal] = useState("Secondary Board Mastery");
+  const [totalJoined, setTotalJoined] = useState(8432);
   const [loading, setLoading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    // Fetch current waitlist count from API
     fetch("/api/waitlist")
       .then((res) => res.json())
       .then((data) => {
@@ -29,7 +28,7 @@ export default function EarlyAccessPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes("@")) {
-      setError("Kripya sahi email pata daalein.");
+      setError("Please enter a valid email address.");
       return;
     }
     setLoading(true);
@@ -43,7 +42,7 @@ export default function EarlyAccessPage() {
           email,
           classLevel,
           state: stateName,
-          source: `early_access_page_${goal}_${preferredLang}`,
+          source: `metronix_early_access_${goal}`,
         }),
       });
 
@@ -52,10 +51,10 @@ export default function EarlyAccessPage() {
         setTotalJoined((prev) => prev + 1);
       } else {
         const data = await res.json().catch(() => ({}));
-        setError(data.error || "Kuch gadbad ho gayi. Kripya punah prayas karein.");
+        setError(data.error || "An error occurred. Please try again.");
       }
     } catch {
-      setError("Network error. Kripya check karein.");
+      setError("Network error. Please check your connection.");
     } finally {
       setLoading(false);
     }
@@ -64,51 +63,52 @@ export default function EarlyAccessPage() {
   return (
     <>
       <Navbar />
-      <main className="flex-1 bg-cream pt-20">
-        <section className="section-wrapper py-16 bg-parchment border-b-2 border-charcoal">
-          <div className="content-container text-left">
-            <span className="badge bg-saffron text-white border-charcoal text-caption font-bold px-3 py-1 mb-4 shadow-hard-sm">
-              Limited 10,000 Early Access Spots
-            </span>
-            <h1 className="text-display-lg sm:text-display-xl text-charcoal font-hindi mb-4">
-              Mentorix VIP Waitlist
+      <main className="flex-1 bg-canvas-subtle pt-20">
+        {/* Banner */}
+        <section className="section-wrapper py-14 bg-white border-b border-slate-200 text-left">
+          <div className="content-container">
+            <span className="badge-brand mb-3">Academic Access Portal</span>
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+              Request Early Student & Educator Access
             </h1>
-            <p className="text-body-lg text-ink font-hindi max-w-2xl leading-relaxed">
-              Pehle 10,000 students ko lifetime muft access, personalized study kit, aur hamare AI mentors ke sath 1-on-1 guidance milegi.
+            <p className="text-base text-slate-600 mt-3 max-w-2xl leading-relaxed">
+              Reserve a verified learning seat for the initial cohort. Includes unrestricted offline virtual lab packs, Socratic tutoring, and scholarship tracking.
             </p>
           </div>
         </section>
 
-        <section className="section-wrapper py-section">
+        {/* Form and Counter */}
+        <section className="section-wrapper py-section text-left">
           <div className="content-container">
-            <div className="grid grid-cols-1 lg:grid-cols-[60fr_40fr] gap-12 items-start text-left">
-              {/* FORM */}
-              <div className="bg-cream border-2 border-charcoal rounded-panel p-8 sm:p-10 shadow-hard-xl">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+              
+              {/* Form Card */}
+              <div className="lg:col-span-7 bg-white border border-slate-200 rounded-2xl p-8 shadow-card">
                 {!submitted ? (
-                  <form onSubmit={handleSubmit} className="space-y-6 font-hindi">
+                  <form onSubmit={handleSubmit} className="space-y-5">
                     <div>
-                      <label className="text-body-sm font-bold text-charcoal block mb-2">
-                        1. Apna Email Address Likho *
+                      <label className="text-xs font-semibold text-slate-700 block mb-1">
+                        Student or Parent Email Address *
                       </label>
                       <input
                         type="email"
                         required
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="apna-email@gmail.com"
-                        className="w-full px-4 py-3.5 rounded-btn border-2 border-charcoal bg-parchment text-charcoal font-hindi text-body-md shadow-hard-sm focus:outline-none focus:border-saffron"
+                        placeholder="student@example.com"
+                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-300 rounded-md text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-600"
                       />
                     </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label className="text-caption font-bold text-stone uppercase block mb-1">
-                          Kaksha (Class)
+                        <label className="text-xs font-semibold text-slate-700 block mb-1">
+                          Academic Class Level *
                         </label>
                         <select
                           value={classLevel}
                           onChange={(e) => setClassLevel(e.target.value)}
-                          className="w-full px-3.5 py-3 rounded-btn border-2 border-charcoal bg-parchment text-charcoal font-hindi text-body-sm shadow-hard-sm"
+                          className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-300 rounded-md text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600"
                         >
                           <option>Class 6</option>
                           <option>Class 7</option>
@@ -117,18 +117,18 @@ export default function EarlyAccessPage() {
                           <option>Class 10</option>
                           <option>Class 11 Science</option>
                           <option>Class 12 Science</option>
-                          <option>Polytechnic / ITI</option>
+                          <option>Polytechnic / Vocational</option>
                         </select>
                       </div>
 
                       <div>
-                        <label className="text-caption font-bold text-stone uppercase block mb-1">
-                          Rajya (State)
+                        <label className="text-xs font-semibold text-slate-700 block mb-1">
+                          State / Region *
                         </label>
                         <select
                           value={stateName}
                           onChange={(e) => setStateName(e.target.value)}
-                          className="w-full px-3.5 py-3 rounded-btn border-2 border-charcoal bg-parchment text-charcoal font-hindi text-body-sm shadow-hard-sm"
+                          className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-300 rounded-md text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600"
                         >
                           <option>Uttar Pradesh</option>
                           <option>Bihar</option>
@@ -143,145 +143,101 @@ export default function EarlyAccessPage() {
                     </div>
 
                     <div>
-                      <label className="text-caption font-bold text-stone uppercase block mb-1">
-                        Aapka Mukhya Lakshya (Primary Goal)
+                      <label className="text-xs font-semibold text-slate-700 block mb-1">
+                        Primary Academic Target
                       </label>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                        {[
-                          "Board Exam Topper",
-                          "IIT / JEE Taiyari",
-                          "NEET (Medical)",
-                          "Polytechnic / Diploma",
-                          "Scholarship Pana",
-                        ].map((item) => (
-                          <button
-                            key={item}
-                            type="button"
-                            onClick={() => setGoal(item)}
-                            className={`p-3 rounded-btn border-2 text-xs font-bold text-left font-hindi transition-all ${
-                              goal === item
-                                ? "bg-saffron text-white border-charcoal shadow-hard-sm"
-                                : "bg-parchment text-ink border-border hover:border-charcoal"
-                            }`}
-                          >
-                            🎯 {item}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="text-caption font-bold text-stone uppercase block mb-1">
-                        Aapki Pasandeeda Bhasha (Language)
-                      </label>
-                      <div className="flex flex-wrap gap-2">
-                        {["Hindi", "Hinglish", "Bhojpuri", "Marathi", "English"].map((lang) => (
-                          <button
-                            key={lang}
-                            type="button"
-                            onClick={() => setPreferredLang(lang)}
-                            className={`px-3 py-1.5 rounded-btn border-2 text-xs font-bold transition-all ${
-                              preferredLang === lang
-                                ? "bg-charcoal text-cream border-charcoal"
-                                : "bg-parchment text-ink border-border hover:border-charcoal"
-                            }`}
-                          >
-                            {lang}
-                          </button>
-                        ))}
-                      </div>
+                      <select
+                        value={goal}
+                        onChange={(e) => setGoal(e.target.value)}
+                        className="w-full px-3.5 py-2.5 text-xs bg-white border border-slate-300 rounded-md text-slate-900 focus:outline-none focus:ring-2 focus:ring-brand-600"
+                      >
+                        <option>Secondary Board Examination Mastery</option>
+                        <option>National Scholarship Qualifications (NMMSS / INSPIRE)</option>
+                        <option>Engineering & Polytechnic Foundations</option>
+                        <option>Medical & Life Sciences Foundations</option>
+                      </select>
                     </div>
 
                     {error && (
-                      <p className="text-rose text-body-sm font-hindi font-medium">{error}</p>
+                      <p className="text-xs text-rose-600 font-medium">{error}</p>
                     )}
 
                     <button
                       type="submit"
                       disabled={loading}
-                      className="btn-primary w-full justify-center py-4 text-base font-bold"
+                      className="btn-primary w-full justify-center py-3 text-xs font-semibold"
                     >
-                      {loading ? "Seat Reserve Kar Rahe Hain..." : "Free Early Access Seat Lo →"}
+                      {loading ? "Processing Registration..." : "Confirm Early Access Enrollment"}
                     </button>
 
-                    <p className="text-stone text-caption text-center font-hindi">
-                      🔒 Zero spam. Hamare launch hone par seedha WhatsApp/Email aayega.
+                    <p className="text-[11px] text-slate-500 text-center">
+                      Confidential academic verification. No marketing spam.
                     </p>
                   </form>
                 ) : (
-                  <div className="bg-leaf/10 border-2 border-leaf rounded-panel p-8 text-center shadow-hard-md">
-                    <span className="text-5xl block mb-3">🎉</span>
-                    <h3 className="text-display-md text-charcoal font-hindi mb-2">
-                      Shabaash! Aapka Sthaan Surakshit Hai.
+                  <div className="text-center py-6">
+                    <div className="w-12 h-12 rounded-full bg-emerald-soft text-emerald flex items-center justify-center mx-auto mb-4">
+                      <CheckCircleIcon size={28} />
+                    </div>
+                    <h3 className="text-lg font-bold text-slate-900 mb-1">
+                      Enrollment Priority Confirmed
                     </h3>
-                    <p className="text-body-md text-ink font-hindi mb-6">
-                      Aapka roll number: <strong>#MTX-{totalJoined}</strong>. Jaise hi launch hoga, aapko sabse pehle direct invite bhejenge.
+                    <p className="text-xs text-slate-600 max-w-md mx-auto mb-6">
+                      Your priority roll index is <strong>#MTX-{totalJoined}</strong>. You will receive immediate deployment notifications upon the cohort launch.
                     </p>
-                    <div className="p-4 bg-cream rounded-card border-2 border-charcoal inline-block text-left font-hindi text-body-sm shadow-hard-sm">
-                      <p>✓ Kaksha: {classLevel}</p>
-                      <p>✓ Rajya: {stateName}</p>
-                      <p>✓ Lakshya: {goal}</p>
-                      <p>✓ Bhasha: {preferredLang}</p>
+                    <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 font-mono text-left max-w-sm mx-auto space-y-1">
+                      <div>Class Level: {classLevel}</div>
+                      <div>Region: {stateName}</div>
+                      <div>Target Focus: {goal}</div>
                     </div>
                   </div>
                 )}
               </div>
 
-              {/* PROGRESS & PERKS SIDEBAR */}
-              <div className="space-y-6">
-                <div className="bg-parchment border-2 border-charcoal rounded-panel p-6 shadow-hard-md text-left">
-                  <div className="flex items-center justify-between pb-3 border-b border-border">
-                    <span className="text-caption font-bold text-stone uppercase font-mono">
-                      Live Registrations
+              {/* Status Sidebar */}
+              <div className="lg:col-span-5 space-y-6">
+                <div className="card-modern">
+                  <span className="text-xs font-bold font-mono text-slate-400 uppercase">
+                    Cohort Capacity
+                  </span>
+                  <div className="my-3 flex items-baseline gap-2">
+                    <span className="text-3xl font-extrabold text-slate-900 font-mono">
+                      {totalJoined.toLocaleString()}
                     </span>
-                    <span className="w-2.5 h-2.5 rounded-full bg-leaf animate-pulse" />
+                    <span className="text-xs text-slate-500">/ 10,000 Early Seats</span>
                   </div>
-                  <div className="my-4">
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-display-lg font-extrabold text-charcoal font-mono">
-                        {totalJoined.toLocaleString()}
-                      </span>
-                      <span className="text-body-sm text-stone font-hindi font-medium">
-                        / 10,000 Chhatra
-                      </span>
-                    </div>
-                    {/* Progress Bar */}
-                    <div className="w-full h-3.5 bg-cream border-2 border-charcoal rounded-full overflow-hidden mt-2 p-0.5">
-                      <div
-                        className="h-full bg-saffron rounded-full"
-                        style={{ width: `${Math.min(100, (totalJoined / 10000) * 100)}%` }}
-                      />
-                    </div>
+                  <div className="w-full h-2 rounded-full bg-slate-100 overflow-hidden">
+                    <div
+                      className="h-full bg-brand-600 rounded-full"
+                      style={{ width: `${Math.min(100, (totalJoined / 10000) * 100)}%` }}
+                    />
                   </div>
-                  <p className="text-caption text-stone font-hindi">
-                    Lagbhag <strong>{10000 - totalJoined}</strong> spots baaki hain.
+                  <p className="text-[11px] text-slate-500 mt-2">
+                    Approximately {10000 - totalJoined} allocations remaining in the current deployment window.
                   </p>
                 </div>
 
-                <div className="bg-cream border-2 border-charcoal rounded-panel p-6 shadow-hard-md text-left">
-                  <h4 className="text-display-sm text-charcoal font-hindi mb-3">
-                    Early Access Ke Fayde:
+                <div className="card-modern space-y-3">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                    Included Capabilities
                   </h4>
-                  <ul className="space-y-2.5 text-body-sm text-ink font-hindi">
-                    <li className="flex items-start gap-2">
-                      <span className="text-leaf font-bold">✦</span>
-                      <span>Lifetime 100% Free Access (sab virtual labs)</span>
+                  <ul className="space-y-2 text-xs text-slate-600">
+                    <li className="flex items-center gap-2">
+                      <CheckCircleIcon size={14} className="text-emerald" />
+                      <span>Full offline access to 50+ laboratory modules</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-leaf font-bold">✦</span>
-                      <span>VIP Doubt Solver pass — 0 waiting time</span>
+                    <li className="flex items-center gap-2">
+                      <CheckCircleIcon size={14} className="text-emerald" />
+                      <span>Unrestricted query allowances on the Socratic AI tutor</span>
                     </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-leaf font-bold">✦</span>
-                      <span>Early scholarship matching alerts via SMS</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-leaf font-bold">✦</span>
-                      <span>Mentorix Founder&apos;s Circle badge</span>
+                    <li className="flex items-center gap-2">
+                      <CheckCircleIcon size={14} className="text-emerald" />
+                      <span>Direct scholarship documentation & deadline tracker</span>
                     </li>
                   </ul>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
